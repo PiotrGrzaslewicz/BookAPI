@@ -2,10 +2,7 @@ package pl.mrook.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.mrook.model.Book;
 import pl.mrook.model.MemoryBookService;
 
@@ -35,6 +32,16 @@ public class BookController {
     @GetMapping(value = "/books/{id}", produces = "application/json; charset=UTF-8")
     public Book bookById(@PathVariable long id) {
         return this.books.getById(id);
+    }
+
+    @PostMapping("/books")
+    public void addBook(@RequestBody Book book) {
+        this.books.addBook(book);
+    }
+
+    @PutMapping("/books")
+    public void editBook(@RequestBody Book book) {
+        this.books.editBook(book);
     }
 
 

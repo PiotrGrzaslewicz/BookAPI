@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 public class MemoryBookService {
 
     private List<Book> list;
+    private static Long nextId = 4L;
 
     public MemoryBookService() {
         list = new ArrayList<>();
@@ -31,5 +32,24 @@ public class MemoryBookService {
             }
         }
         return null;
+    }
+
+    public void addBook(Book book) {
+        book.setId(nextId);
+        this.list.add(book);
+        nextId++;
+    }
+
+    public void editBook(Book book) {
+        for (Book b : list) {
+            if (b.getId()== book.getId()) {
+                b.setIsbn(book.getIsbn());
+                b.setTitle(book.getTitle());
+                b.setAuthor(book.getAuthor());
+                b.setPublisher(book.getPublisher());
+                b.setType(book.getType());
+                break;
+            }
+        }
     }
 }
