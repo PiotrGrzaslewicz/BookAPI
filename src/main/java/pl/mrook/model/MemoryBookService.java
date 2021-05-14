@@ -52,4 +52,9 @@ public class MemoryBookService {
             }
         }
     }
+
+    public void deleteBook(long id) {
+        Book book = getById(id);
+        list.remove(book);
+    }
 }

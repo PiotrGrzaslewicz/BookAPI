@@ -44,5 +44,10 @@ public class BookController {
         this.books.editBook(book);
     }
 
+    @DeleteMapping("/books/{id}")
+    public void deleteBook(@PathVariable long id) {
+        this.books.deleteBook(id);
+    }
+
 
 }
